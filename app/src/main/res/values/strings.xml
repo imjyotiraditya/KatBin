@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">KatBin</string>
+    <string name="enter_text">Enter text</string>
+    <string name="upload">Upload</string>
 </resources>

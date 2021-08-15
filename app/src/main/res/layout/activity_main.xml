@@ -10,34 +10,29 @@
         android:layout_height="match_parent"
         android:animateLayoutChanges="true">
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_margin="16dp"
+            android:paddingTop="16dp"
             android:paddingBottom="16dp">
 
-            <RelativeLayout
+            <EditText
+                android:id="@+id/editText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="16dp"
-                android:paddingTop="16dp"
-                android:paddingBottom="16dp">
+                android:hint="@string/enter_text"
+                android:importantForAutofill="no"
+                android:inputType="none" />
 
-                <EditText
-                    android:id="@+id/editText"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="Enter text" />
+            <Button
+                android:id="@+id/button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/editText"
+                android:layout_marginTop="8dp"
+                android:text="@string/upload" />
 
-                <Button
-                    android:id="@+id/button"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/editText"
-                    android:layout_marginTop="8dp"
-                    android:text="Upload" />
-
-            </RelativeLayout>
-        </LinearLayout>
+        </RelativeLayout>
     </ScrollView>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
