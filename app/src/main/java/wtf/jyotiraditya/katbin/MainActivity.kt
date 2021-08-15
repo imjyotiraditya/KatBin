@@ -5,25 +5,22 @@ import android.content.ClipboardManager
 import android.content.Context
 import android.os.Bundle
 import android.util.Log
-import android.widget.Button
-import android.widget.EditText
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.google.android.material.snackbar.Snackbar
 import wtf.jyotiraditya.katbin.KatBinUtils.UploadResultCallback
+import wtf.jyotiraditya.katbin.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 
-    private var editText: EditText? = null
-    private var button: Button? = null
+    private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-        editText = findViewById(R.id.editText)
-        button = findViewById(R.id.button)
-        button?.setOnClickListener {
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+        binding.button.setOnClickListener {
             postToKatBinAndCopyURL(
-                editText?.text.toString()
+                binding.editText.text.toString()
             )
         }
     }
@@ -37,7 +34,8 @@ class MainActivity : AppCompatActivity() {
                     getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
                 clipboard.setPrimaryClip(ClipData.newPlainText("Log URL", url))
 
-                Toast.makeText(this@MainActivity, "Copied to ClipBoard", Toast.LENGTH_LONG).show()
+                Snackbar.make(binding.mainContainer, "Copied to ClipBoard", Snackbar.LENGTH_LONG)
+                    .show()
             }
 
             override fun onFail(message: String, e: Exception) {
